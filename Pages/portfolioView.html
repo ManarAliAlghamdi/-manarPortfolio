@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />       
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manar Alghamdi | Developer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+    :root {
+  --primary: #1a1525;         /* Deep Eggplant (background) */
+  --accent: #2c203f;          /* Muted Plum (cards/sections) */
+  --dark: #40324e;            /* Dusty Grape (UI elements/nav) */
+  --highlight: #b497d6;       /* Saudi Lavender (accent color) */
+  --light: #f5f2fa;           /* Soft Lavender White (text/contrast) */
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #1e1f26, #16171c, #101113, #1e1f26);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+      color: var(--light);
+    }
+    
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--dark);
+      padding: 1rem 0;
+      text-align: center;
+      z-index: 1000;
+      border-bottom: 1px solid var(--highlight);
+    }
+    
+    nav a {
+      color: var(--light);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+  color: var(--highlight);
+  text-shadow: 0 0 6px var(--highlight);
+  transform: scale(1.1);
+}
+    
+    header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 100px 10% 50px;
+  background: linear-gradient(to right, #292a30, #181818);
+     color: var(--light);
+    }
+    
+    header .intro-text {
+      flex: 1;
+      padding-right: 40px;
+    }
+    
+    header .intro-text h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      color: var(--highlight);
+      font-weight: 700;
+    }
+    
+    header .intro-text p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  color: #cccccc;
+}
+    
+header img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--highlight);
+}
+    
+    section {
+      padding: 60px 10%;
+    }
+    
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      color: var(--highlight);
+      font-weight: 700;
+    }
+    
+    .socials {
+      display: flex;
+      gap: 18px;
+      margin-top: 20px;
+      justify-content: flex-start;
+    }
+    .socials a {
+      color: var(--highlight);
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .socials a:hover {
+      transform: scale(1.2);
+    }
+    
+    .about-text {
+      background: var(--accent);
+      padding: 24px;
+      border-radius: 12px;
+      border-left: 6px solid var(--highlight);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      color: var(--light);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 800px;
+    }
+    
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .tool-card:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 6px var(--highlight));
+}
+    .icon-frame {
+      background: var(--accent);
+      border: 2px solid var(--highlight);
+      padding: 10px;
+      border-radius: 16px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .tool-card img {
+      max-width: 60px;
+      max-height: 60px;
+      object-fit: contain;
+      filter: grayscale(0%);
+    }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+    }
+    .card::after {
+      content: '\f061';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--highlight);
+      margin-left: auto;
+    }
+
+
+    .about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.about-box {
+  background: var(--accent);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 6px solid var(--highlight);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+.about-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 10px var(--highlight), 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+    .card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  min-height: 160px;
+
+  background: var(--accent); /* clean solid color */
+  /* remove gradient */
+  /* remove animation */
+
+  border-radius: 12px;
+  border: 2px solid transparent; /* Needed to animate border */
+  border-left: 6px solid var(--highlight);
+  color: var(--light);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-left: 6px solid var(--highlight); /* re-emphasize on hover */
+  box-shadow: 0 0 12px var(--highlight), 0 12px 24px rgba(0, 0, 0, 0.3);
+
+}
+    .card h3 {
+      margin: 0 0 5px;
+      color: var(--light);
+    }
+    .card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .card img {
+      width: 90px;
+      height: 90px;
+      border-radius: 16px;
+    }
+    
+
+    #spotlight {
+  padding: 60px 10%;
+}
+
+.spotlight-card {
+  display: flex;
+  gap: 30px;
+  background: var(--accent);
+  padding: 24px;
+  border-left: 6px solid var(--highlight);
+  border-radius: 12px;
+  margin-bottom: 30px;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+
+}
+
+.spotlight-card img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid var(--highlight);
+}
+
+.spotlight-text {
+  flex: 1;
+}
+
+.spotlight-text h3 {
+  color: var(--highlight);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.spotlight-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.spotlight-text a.read-more {
+  color: var(--highlight);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.spotlight-text a.read-more:hover {
+  text-decoration: underline;
+}
+
+.read-more {
+  text-decoration: none;
+  color: var(--highlight);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.read-more:hover {
+  color: #ffffff;
+}
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--accent);
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 6px solid var(--highlight);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      color: var(--light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    }
+    .testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 10px var(--highlight), 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+    .testimonial-card img {
+      max-width: 80px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .testimonial-card h4 {
+      margin-bottom: 5px;
+      color: var(--highlight);
+    }
+    .testimonial-card span {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .testimonial-card p {
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+    .spotlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 12px var(--highlight), 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-left: 6px solid var(--highlight);
+}
+    .resume-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: var(--highlight);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .resume-button:hover {
+  background: #40324e; /* slightly deeper version of highlight */
+}
+    footer {
+      text-align: center;
+      padding: 30px 10%;
+      background: var(--dark);
+      color: var(--light);
+      border-top: 1px solid #333;
+    }
+
+    
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+.card {
+  position: relative;
+}
+
+    @keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+    </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#stack">My Tools</a>
+    <a href="#projects">Projects</a>
+    <a href="#spotlight">Spotlight</a>
+    <a href="#words">Words</a>
+  </nav>
+
+<div style="
+  background: var(--accent);
+  color: var(--highlight);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-top: 1px solid #b497d6;
+  border-bottom: 1px solid #b497d6;
+  margin-top: 55px;
+  z-index: 999;
+  position: relative;
+">
+   Featured at WWDC25  as Swift Student Challenge <b>Distinguished</b> Winner 🏆
+</div>
+
+<header>
+    <div class="intro-text">
+      <h1>Hi, I'm Manar 👋<br>Full Stack Developer | Product Thinker</h1>
+      <p>I turn problems into products, with code, empathy, and vision. <br>I believe technology becomes magical when it simply works for everyone.</p>
+
+      <div class="socials" style="margin-top: 24px;">
+        <a href="https://github.com/ManarAliAlghamdi" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/manaralghamdi07" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:manar.a.gh@hotmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <img src=" manarProfile.jpg" alt="Manar Alghamdi" />
+  </header>
+
+
+  <section id="about">
+    <h2>Facts About me</h2>
+    <div class="about-grid">
+      <div class="about-box">I learn <b>fast</b>. But more importantly, I never stop learning.</div>
+      <div class="about-box">I don’t have all the answers — but I never stop asking better questions.</div>
+      <div class="about-box">I’m proud of what I’ve built, but I’m even more excited by what I’ve yet to learn.</div>
+      <div class="about-box">Every bug, every late-night fix, every challenge — that’s where I’ve grown the most.</div>
+      <div class="about-box">I build with intention, lead with empathy, and stay curious — always.</div>
+      <div class="about-box">Feedback doesn’t scare me. In fact, I chase it.</div>
+      <div class="about-box">I’d rather fail trying something bold than succeed playing it safe.</div>
+      <div class="about-box">I listen deeply — to users, to teammates, to the problem itself.</div>
+      <div class="about-box">I love backend work — especially designing clean, logical database structures.</div>
+<div class="about-box">I see code like a puzzle — and I <b>LOVE</b> fitting the pieces together.</div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <h2 style="font-size: 2.4rem; color: var(--highlight); margin-bottom: 30px;">My Developer Arsenal</h2>
+  
+    <!-- Frontend Tools -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="color: var(--light); font-size: 1.6rem; margin-bottom: 16px; border-left: 4px solid var(--highlight); padding-left: 12px;">Frontend</h3>
+      <div class="tech-icons" style="justify-content: flex-start; gap: 40px; flex-wrap: wrap;">
+        <div class="tool-card">
+          <div class="icon-frame"><img src="swift.png" alt="Swift" title="Swift (SwiftUI)" /></div>
+          <span>Swift</span>
+        </div>
+        <div class="tool-card">
+          <div class="icon-frame"><img src="flutter.png" alt="Flutter" title="Flutter" /></div>
+          <span>Flutter</span>
+        </div>
+        
+      </div>
+    </div>
+  
+    <!-- Backend Tools -->
+    <div>
+      <h3 style="color: var(--light); font-size: 1.6rem; margin-bottom: 16px; border-left: 4px solid var(--highlight); padding-left: 12px;">Backend & Data</h3>
+      <div class="tech-icons" style="justify-content: flex-start; gap: 40px; flex-wrap: wrap;">
+        <div class="tool-card">
+          <div class="icon-frame"><img src=" swiftdata.png" alt="SwiftData" title="SwiftData" /></div>
+          <span>SwiftData</span>
+        </div>
+        <div class="tool-card">
+          <div class="icon-frame"><img src="icloud.png" alt="CloudKit" title="iCloud / CloudKit" /></div>
+          <span>CloudKit</span>
+        </div>
+        <div class="tool-card">
+          <div class="icon-frame"><img src=" firebase.png" alt="Firebase DB" title="Firebase DB" /></div>
+          <span>Firebase DB</span>
+        </div>
+        <div class="tool-card">
+          <div class="icon-frame"><img src="ssms.png" alt="SSMS" title="SQL Server Management Studio" /></div>
+          <span>SSMS</span>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section id="projects">
+    <h2>My Apps</h2>
+    <div class="projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px;">
+
+      <a href="https://www.wwdcscholars.com/s/9891A003-683C-4B8F-9AA3-6FA6D376B0DB/2025" class="card">
+        <img src="EyeopenerIcon.png" alt="EyeOpener Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+        <div>
+          <h3>EyeOpener <span style="font-size: 0.8rem; color: var(--highlight);"><br>WWDC25 Distinguished Winner 🏆</span></h3>
+          <p>Simulates the frustration of non-accessible UI for developers. Built to raise empathy and awareness.</p>
+        </div>
+      </a>
+
+      <a href="sandSound.html" class="card">
+        <img src="sand-sound.png" alt="Sand Sound Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+        <div>
+          <h3>Sand Sound</h3>
+          <p>Audio-only game designed for blind and visually impaired players. Uses 3D sound and haptics.</p>
+        </div>
+      </a>
+
+      <a href="projects/qararek.html" class="card">
+        <img src="clarityIcon.png" alt="Qararek Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+        <div>
+          <h3>clarity</h3>
+          <p>Helps users make emotionally-intelligent decisions through scenario-based logic guidance.</p>
+        </div>
+      </a>
+
+      <a href="projects/pspots.html" class="card">
+        <img src="PSpotsIcon.png" alt="PSpots Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+        <div>
+          <h3>PSpots</h3>
+          <p>Community-powered map of accessible public places. Designed to empower people with disabilities.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="spotlight">
+    <h2>In the Spotlight</h2>
+
+    <div class="spotlight-card">
+      <img src="wwdc25.jpg" alt="WWDC25 Distinguished Winner" />
+      <div class="spotlight-text">
+        <h3>🌍 WWDC25 in Cupertino</h3>
+        <p>
+          I attended <strong>WWDC25</strong> in Cupertino as a Swift Student Challenge Distinguished Winner — a week of magic, learning, and incredible people.
+        </p>
+        <a href="https://www.linkedin.com/posts/manaralghamdi07_wwdc25-activity-7340911449591996416--GRs?utm_medium=ios_app&rcm=ACoAADaiLI4BGFUV8MSd7-BchEPClSVKHwgEVj8&utm_source=social_share_send&utm_campaign=copy_link" target="_blank" class="read-more">🚀 View My Post</a>
+      </div>
+    </div>
+    
+    <div class="spotlight-card">
+      <img src="sandSoundStage.png" alt="Sand Sound on Stage" />
+      <div class="spotlight-text">
+        <h3>🎤 Sand Sound on Stage!</h3>
+        <p>
+          I had the honor of presenting <strong>Sand Sound</strong> live on stage with my team during our Apple Developer Academy graduation.<br>
+      Our game was proudly showcased as one of the best projects — proving that inclusive design can lead the way in innovation.
+   
+        </p>
+        <a href="https://www.linkedin.com/posts/manaralghamdi07_aelaeraepaexaeyaetaeyaerabraetaefaewaezaeyabraekaeqaes-activity-7336397803369168896-Ic8d" target="_blank" class="read-more">📷 See the Moment</a>
+      </div>
+    </div>
+    
+    <div class="spotlight-card">
+      <img src="sayidaty.jpg" alt="Article Cover" />
+      <div class="spotlight-text">
+        <h3>📣 Featured in Sayidaty Magazine</h3>
+        <p>
+          Sayidaty profiled me and other WWDC25 Distinguished Winners! I shared how I built Sand Sound
+          to make gaming more accessible.
+        </p>
+        <a href="https://www.sayidaty.net/تطوير-الذات-والتمكين/قصص-ملهمة/1812699-تحدي-سويفت-العالمي-آبل" target="_blank" class="read-more">🔗 Read Article</a>
+      </div>
+    </div>
+    <div class="spotlight-card">
+      <img src="SAFCSP.jpg" alt="SAFCSP Highlight" />
+      <div class="spotlight-text">
+        <h3>🇸🇦 Featured by SAFCSP</h3>
+        <p>
+          I was featured in the <strong>#صناعات_التقنية</strong> series — sharing my journey as a Saudi woman in tech and the power of the right environment to turn dreams into action.
+        </p>
+        <a href="https://www.linkedin.com/posts/manaralghamdi07_aedaepaeuaehaepaesabraepaesaesaeqaeuaeyaer-activity-7332710236757098497-6N0x" target="_blank" class="read-more">🎥 Watch the Story</a>
+      </div>
+    </div>
+    <div class="spotlight-card">
+      <img src="mcit-logo.jpg" alt="Celebrated by MCIT Saudi" />
+      <div class="spotlight-text">
+        <h3>💡 Girls in ICT 2025</h3>
+        <p>
+          I had the incredible opportunity to share my story during the <strong>International Day of Girls in ICT 2025</strong>, hosted by the Ministry of Communications and Information Technology.<br>
+          It was a powerful reminder that telling our stories matters — especially when they inspire the next generation of women in tech.
+        </p>
+        <a href="https://vt.tiktok.com/ZSkKWnhtm/" target="_blank" class="read-more">🎥 Watch the Video</a>
+      </div>
+    </div>
+    <div class="spotlight-card">
+      <img src="mcit-logo.jpg" alt="Celebrated by MCIT Saudi" />
+      <div class="spotlight-text">
+        <h3>🌟 Honored by the Ministry of Communications</h3>
+        <p>
+          I was recognized as one of the Saudi women celebrated in tech by the 
+          <strong>Ministry of Communications and Information Technology of Saudi Arabia</strong>.<br>
+          It was a proud moment that reminded me how leadership’s commitment to empowering women continues to shape our future in tech.
+        </p>
+        <a href="https://www.linkedin.com/posts/manaralghamdi07_aeqaepaeoaexaepaesabraepaesaesaeqaeuaeyaer-activity-7321544483681062916-B1Od" target="_blank" class="read-more">🏆 View the Celebration</a>
+      </div>
+    </div>
+    <div class="spotlight-card">
+      <img src="apple.jpg" alt="Sand Sound Apple Presentation" />
+      <div class="spotlight-text">
+        <h3>🚀 Presented Sand Sound to Apple Online Storee</h3>
+        <p>
+          I had the privilege of presenting <strong>Sand Sound</strong> to the Apple Online Store team — including top leaders like Karen Rasmussen and Camille Rose. What a surreal moment!
+        </p>
+        <a href="https://www.linkedin.com/posts/manaralghamdi07_honored-to-present-sandsound-to-the-apple-activity-7289759822047031297-vAZT" target="_blank" class="read-more">🖥️ View the Post</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="words">
+    <h2>Words About Me</h2>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <h4>Sarah Ahmed</h4>
+        <span>UX Designer</span>
+        <p>“Manar has a gift for building with both logic and empathy. Her attention to users is unmatched.”</p>
+      </div>
+      <div class="testimonial-card">
+        <h4>Mohammed Alzahrani</h4>
+        <span>Software Engineer</span>
+        <p>“She turns technical constraints into creative opportunities. Working with her is always insightful.”</p>
+      </div>
+      <div class="testimonial-card">
+        <h4>Lina Alharbi</h4>
+        <span>Accessibility Consultant</span>
+        <p>“Every app Manar builds tells a story — and solves a real human need with clarity and grace.”</p>
+      </div>
+    </div>
+  </section>
+
+
+  <div style="text-align: center; margin: 40px 0;">
+    <a href="ManarAlghamdi resume.pdf" download class="resume-button">📄 Download My Resume</a>
+  </div>
+  <footer style="text-align: center; padding: 30px 10%; background: var(--dark);">
+    <p style="font-size: 0.9rem; color: #aaa;">© 2025 Manar Alghamdi. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
