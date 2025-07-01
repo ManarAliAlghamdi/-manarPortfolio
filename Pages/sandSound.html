@@ -16,28 +16,30 @@
     }
 
     .screenshot-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
 
-.screenshot-gallery img {
-  width: 300px;
-  height: auto;
-  border-radius: 12px;
-  border: 2px solid var(--highlight);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
+    .screenshot-gallery img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid var(--highlight);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
 
-.screenshot-gallery img:hover {
-  transform: scale(1.03);
-}
+    .screenshot-gallery img:hover {
+      transform: scale(1.03);
+    }
+
     .project-section img:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
-}
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(-45deg, #1e1f26, #16171c, #101113, #1e1f26);
@@ -56,13 +58,16 @@
       background: linear-gradient(135deg, var(--primary), var(--accent));
       padding: 10px 10%;
       color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
 
     .project-header h1 {
-  font-size: 2.8rem;
-  color: var(--highlight);
-  margin-bottom: 0;
-}
+      font-size: 2.8rem;
+      color: var(--highlight);
+      margin-bottom: 0;
+    }
 
     .project-status {
       display: inline-block;
@@ -124,8 +129,9 @@
   </style>
 </head>
 <body>
-  <a class="back-link" href="/Users/manar/Desktop/WebProjects/ManarPortfolio/index.html">← Back to Portfolio</a>
+  <a class="back-link" href="index.html">← Back to Portfolio</a>
 
+<<<<<<< HEAD
   <header class="project-header" style="display: flex; align-items: center; gap: 30px;">
     <img src="assest/sand-sound.png" alt="Sand Sound Icon" style="
    width: 140px;
@@ -135,6 +141,10 @@
   background: var(--accent);
   padding: 8px;
     " />
+=======
+  <header class="project-header">
+    <img src="assest/sand-sound.png" alt="Sand Sound Icon" style="width: 140px; height: 140px; border-radius: 28px; border: 4px solid var(--highlight); background: var(--accent); padding: 8px;" />
+>>>>>>> 32b10f8 (your commit message)
     <div>
       <h1>Sand Sound</h1>
       <div class="project-status app-store">App Store</div>
@@ -170,12 +180,12 @@
       Collaborating closely with the team, I helped ensure that the audio-first experience was intuitive, responsive, and fully accessible.
     </p>
   </section>
+
   <section class="project-section">
     <h2>Screenshots or Demo</h2>
     <div class="screenshot-gallery">
       <img src="assest/SandSoundScreenshot1.png" alt="Sand Sound Screenshot 1" />
       <img src="assest/SandSoundScreenshot1.png" alt="Sand Sound Screenshot 2" />
-      <!-- Add more images as needed -->
     </div>
     <p style="margin-top: 20px;">
       Coming soon — meanwhile, the game is available on the App Store.
