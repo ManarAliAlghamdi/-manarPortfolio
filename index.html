@@ -444,7 +444,9 @@ header img {
 }
     </style>
 </head>
+
 <body>
+  
   <nav>
     <a href="#about">About Me</a>
     <a href="#stack">My Tools</a>
@@ -566,7 +568,7 @@ header img {
         </div>
       </a>
 
-      <a href="projects/qararek.html" class="card">
+      <a href="pages/clarity.html" class="card">
         <img src="assest/clarityIcon.png" alt="Clarity Icon" style="width: 90px; height: 90px; border-radius: 16px;">
         <div>
           <h3>clarity</h3>
@@ -703,5 +705,13 @@ header img {
   <footer style="text-align: center; padding: 30px 10%; background: var(--dark);">
     <p style="font-size: 0.9rem; color: #aaa;">© 2025 Manar Alghamdi. All rights reserved.</p>
   </footer>
+  <script>
+    // Disable link behavior but keep hover animation
+    document.querySelectorAll('#projects .card').forEach(card => {
+      card.addEventListener('click', function(event) {
+        event.preventDefault(); // Block the link from opening
+      });
+    });
+  </script>
 </body>
 </html>
