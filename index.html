@@ -169,7 +169,60 @@ header img {
       object-fit: contain;
       filter: grayscale(0%);
     }
-    
+    @media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 5% 40px;
+  }
+
+  header .intro-text {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+
+  header img {
+    width: 180px;
+    height: 180px;
+  }
+
+  header .intro-text h1 {
+    font-size: 2rem;
+  }
+
+  header .intro-text p {
+    font-size: 1rem;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+}
+    @media screen and (max-width: 768px) {
+  .spotlight-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .spotlight-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+
+  .spotlight-text {
+    width: 100%;
+  }
+
+  .spotlight-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .spotlight-text p {
+    font-size: 0.95rem;
+  }
+}
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -514,13 +567,19 @@ header img {
       </a>
 
       <a href="projects/qararek.html" class="card">
-        <img src="assest/clarityIcon.png" alt="Qararek Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+        <img src="assest/clarityIcon.png" alt="Clarity Icon" style="width: 90px; height: 90px; border-radius: 16px;">
         <div>
           <h3>clarity</h3>
-          <p>Helps users make emotionally-intelligent decisions through scenario-based logic guidance.</p>
+          <p>An AI-powered assistant that guides users through big life choices using logic, reflection, and emotional insight.</p>
         </div>
       </a>
-
+      <a href="projects/wed.html" class="card">
+        <img src="assest/wedIcon.png" alt="Wed Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+        <div>
+          <h3>Wed</h3>
+          <p>An AI-powered gift assistant that remembers your loved ones and recommends thoughtful gifts — based on personality, occasion, and relationship.</p>
+        </div>
+      </a>
       <a href="projects/pspots.html" class="card">
         <img src="assest/PSpotsIcon.png" alt="PSpots Icon" style="width: 90px; height: 90px; border-radius: 16px;">
         <div>
