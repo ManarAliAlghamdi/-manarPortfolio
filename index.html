@@ -332,6 +332,7 @@ header .intro-text h1 { font-size: var(--headline-scale); }
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 .card:hover {
   transform: translateY(-8px);
@@ -494,6 +495,21 @@ header .intro-text h1 { font-size: var(--headline-scale); }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* ===== Projects Detail (SPA) ===== */
+.project-detail .back-link{display:inline-block;margin:20px 0;color:var(--highlight);text-decoration:none;font-weight:700}
+.project-detail .back-link:hover{text-decoration:underline}
+.project-header{background:linear-gradient(135deg,var(--primary),var(--accent));padding:10px var(--content-pad);color:var(--light);display:flex;align-items:center;gap:30px;border-radius:12px;border:1px solid var(--highlight)}
+.project-header img{width:140px;height:140px;border-radius:28px;border:4px solid var(--highlight);background:var(--accent);padding:8px}
+.project-header h1{font-size:2.2rem;color:var(--highlight);margin:0}
+.project-status{display:inline-block;margin-top:8px;padding:6px 14px;border-radius:20px;font-size:.9rem;font-weight:600;letter-spacing:.6px;border:1px solid}
+.project-status.app-store{color:#8bd46e;background:rgba(139,212,110,.15);border-color:#8bd46e}
+.project-section{padding:24px var(--content-pad)}
+.project-section h2{font-size:1.4rem;color:var(--highlight);margin:0 0 8px}
+.project-section p,.project-section ul{font-size:1.05rem;line-height:1.7;max-width:800px;margin:0}
+.project-section ul{padding-left:20px} 
+.screenshot-gallery{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
+.screenshot-gallery img{width:300px;height:auto;border-radius:12px;border:2px solid var(--highlight);box-shadow:0 4px 12px rgba(0,0,0,.3);transition:transform .3s ease}
+.screenshot-gallery img:hover{transform:scale(1.03)}
     </style>
 </head>
 
@@ -608,52 +624,46 @@ header .intro-text h1 { font-size: var(--headline-scale); }
   </section>
   
 
+<section id="projects" class="container-pad">
+  <h2>My Apps</h2>
 
-  <section id="projects">
-    <h2>My Apps</h2>
-    <div class="projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px;">
+  <!-- Dynamic list rendered from JS -->
+  <div id="projects-list" class="projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px;"></div>
 
-      <a href="https://www.wwdcscholars.com/s/9891A003-683C-4B8F-9AA3-6FA6D376B0DB/2025" class="card">
-        <img src="assest/EyeopenerIcon.png" alt="EyeOpener Icon" style="width: 90px; height: 90px; border-radius: 16px;">
-        <div>
-          <h3>EyeOpener <span style="font-size: 0.8rem; color: var(--highlight);"><br>WWDC25 Distinguished Winner 🏆</span></h3>
-          <p>Simulates the frustration of non-accessible UI for developers. Built to raise empathy and awareness.</p>
-        </div>
-      </a>
+  <!-- SPA Project Detail View (hidden by default) -->
+  <div id="project-detail" class="project-detail" hidden>
+    <a class="back-link" href="#/">← Hide</a>
+    <header class="project-header">
+      <img id="pd-hero" src="" alt="Project Icon" />
+      <div>
+        <h1 id="pd-title"></h1>
+        <div id="pd-status" class="project-status" hidden></div>
+        <p id="pd-subtitle" class="pd-subtitle"></p>
+      </div>
+    </header>
 
-      <a href="Pages/sandSound.html" class="card">
-        <img src="assest/sand-sound.png" alt="Sand Sound Icon" style="width: 90px; height: 90px; border-radius: 16px;">
-        <div>
-          <h3>Sand Sound</h3>
-          <p>Audio-only game designed for blind and visually impaired players. Uses 3D sound and haptics.</p>
-        </div>
-      </a>
+    <section class="project-section">
+      <h2>Overview</h2>
+      <p id="pd-overview"></p>
+    </section>
 
-      <a href="pages/clarity.html" class="card">
-        <img src="assest/clarityIcon.png" alt="Clarity Icon" style="width: 90px; height: 90px; border-radius: 16px;">
-        <div>
-          <h3>clarity</h3>
-          <p>An AI-powered assistant that guides users through big life choices using logic, reflection, and emotional insight.</p>
-        </div>
-      </a>
-      <a href="projects/wed.html" class="card">
-        <img src="assest/wedicon.png" alt="Wed Icon" style="width: 90px; height: 90px; border-radius: 16px;">
-        <div>
-          <h3>Wed</h3>
-          <p>An AI-powered gift assistant that remembers your loved ones and recommends thoughtful gifts — based on personality, occasion, and relationship.</p>
-        </div>
-      </a>
-      <a href="projects/pspots.html" class="card">
-        <img src="assest/PSpotsIcon.png" alt="PSpots Icon" style="width: 90px; height: 90px; border-radius: 16px;">
-        <div>
-          <h3>PSpots</h3>
-          <p>Community-powered map of accessible public places. Designed to empower people with disabilities.</p>
-        </div>
-      </a>
+    <section class="project-section" id="pd-features-wrap" hidden>
+      <h2>Features</h2>
+      <ul id="pd-features"></ul>
+    </section>
 
-    </div>
-  </section>
+    <section class="project-section" id="pd-role-wrap" hidden>
+      <h2>My Role</h2>
+      <p id="pd-role"></p>
+    </section>
 
+    <section class="project-section" id="pd-shots-wrap" hidden>
+      <h2>Screenshots or Demo</h2>
+      <div id="pd-shots" class="screenshot-gallery"></div>
+      <p id="pd-extra" class="pd-extra"></p>
+    </section>
+  </div>
+</section>
   
   <section id="spotlight">
     <h2>In the Spotlight</h2>
@@ -741,26 +751,145 @@ header .intro-text h1 { font-size: var(--headline-scale); }
   <footer style="text-align: center; padding: 30px 10%; background: var(--dark);">
     <p style="font-size: 0.9rem; color: #aaa;">© 2025 Manar Alghamdi. All rights reserved.</p>
   </footer>
-  <script>
-    // Disable link behavior but keep hover animation
-    document.querySelectorAll('#projects .card').forEach(card => {
-      card.addEventListener('click', function(event) {
-        event.preventDefault(); // Block the link from opening
-      });
-    });
-    // Mobile nav toggle
-    const toggleBtn = document.querySelector('.nav-toggle');
-    const links = document.getElementById('navLinks');
-    if (toggleBtn && links) {
-      toggleBtn.addEventListener('click', () => {
-        const isOpen = links.classList.toggle('open');
-        toggleBtn.setAttribute('aria-expanded', String(isOpen));
-      });
-      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      }));
+  <script type="module">
+  const listEl  = document.getElementById('projects-list');
+  const detailEl = document.getElementById('project-detail');
+  const titleEl = document.querySelector('#projects > h2');
+
+  function scrollToProjectsTop(){
+    const section = document.getElementById('projects');
+    if (!section) return;
+    // read CSS var --nav-height if available, else default 64
+    const rootStyles = getComputedStyle(document.documentElement);
+    const navHVar = rootStyles.getPropertyValue('--nav-height').trim();
+    const navH = parseInt(navHVar || '64', 10) || 64;
+    const top = section.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  function el(id){ return document.getElementById(id); }
+
+  function renderList(projects){
+    console.log('[SPA] renderList()', projects && projects.length);
+    detailEl.hidden = true;
+    titleEl.hidden = false;
+    listEl.hidden = false;
+    scrollToProjectsTop();
+
+    if (!Array.isArray(projects) || projects.length === 0) {
+      listEl.innerHTML = `<div style="opacity:.8">No projects found. Check <code>assest/projects.js</code> export.</div>`;
+    } else {
+      listEl.innerHTML = projects.map(p => `
+        <a class="card" href="#/project/${p.slug}">
+          <img src="${p.hero}" alt="${p.title} Icon" style="width: 90px; height: 90px; border-radius: 16px;">
+          <div>
+            <h3>${p.title}${p.subtitle ? `<span style=\"font-size: 0.8rem; color: var(--highlight);\"><br>${p.subtitle}</span>` : ''}</h3>
+            <p>${p.description || ''}</p>
+          </div>
+        </a>
+      `).join('');
     }
-  </script>
+    // ensure taps navigate to details (iOS Safari sometimes needs explicit listener)
+    listEl.querySelectorAll('a.card').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        if (!href) return;
+        // update hash and route
+        location.hash = href.replace(/^#/, '');
+        // call router immediately for instant UI update
+        const ev = new Event('hashchange');
+        window.dispatchEvent(ev);
+      }, { passive: false });
+    });
+  }
+
+  function renderDetail(projects, slug){
+    console.log('[SPA] renderDetail()', slug);
+    const p = Array.isArray(projects) ? projects.find(x => x.slug === slug) : null;
+    if(!p){ location.hash = '#/'; return; }
+
+    listEl.hidden  = true;
+    titleEl.hidden = true;
+    detailEl.hidden = false;
+    scrollToProjectsTop();
+
+    el('pd-hero').src = p.hero || '';
+    el('pd-hero').alt = p.title || 'Project Icon';
+    el('pd-title').textContent = p.title || '';
+
+    const statusEl = el('pd-status');
+    if(p.status){
+      statusEl.textContent = p.status.label;
+      statusEl.className = 'project-status ' + (p.status.variant || '');
+      statusEl.hidden = false;
+    } else { statusEl.hidden = true; }
+
+    el('pd-subtitle').textContent = p.subtitle || '';
+    el('pd-overview').textContent = p.longDescription || p.description || '';
+
+    const fWrap = document.getElementById('pd-features-wrap');
+    const fList = document.getElementById('pd-features');
+    if(Array.isArray(p.features) && p.features.length){
+      fList.innerHTML = p.features.map(x=>`<li>${x}</li>`).join('');
+      fWrap.hidden = false;
+    } else { fWrap.hidden = true; fList.innerHTML=''; }
+
+    const rWrap = document.getElementById('pd-role-wrap');
+    if(p.role){ el('pd-role').textContent = p.role; rWrap.hidden=false; } else { rWrap.hidden=true; }
+
+    const sWrap = document.getElementById('pd-shots-wrap');
+    const shotsEl = document.getElementById('pd-shots');
+    if(Array.isArray(p.screens) && p.screens.length){
+      shotsEl.innerHTML = p.screens.map(src => `<img src="${src}" alt="${p.title} screenshot">`).join('');
+      sWrap.hidden = false;
+    } else { sWrap.hidden = true; shotsEl.innerHTML=''; }
+
+    el('pd-extra').textContent = p.extra || '';
+  }
+
+  function makeRouter(projects){
+    return function router(){
+      console.log('[SPA] router()', location.hash);
+      const m = location.hash.match(/^#\/project\/([^\n?#]+)/);
+      if (m) {
+        renderDetail(projects, decodeURIComponent(m[1]));
+      } else {
+        renderList(projects);
+      }
+    };
+  }
+
+  (async () => {
+    try {
+      const mod = await import('./assest/projects.js');
+      const projects = mod.projects;
+      console.log('[SPA] projects loaded:', Array.isArray(projects) ? projects.length : projects);
+
+      const router = makeRouter(projects);
+      window.addEventListener('hashchange', router);
+      document.addEventListener('DOMContentLoaded', router);
+      // Ensure initial render even if DOMContentLoaded already fired
+      router();
+    } catch (err) {
+      console.error('[SPA] Failed to load assest/projects.js', err);
+      listEl.innerHTML = `<div style="color:#f88">Failed to load <code>assest/projects.js</code>. ${String(err)}</div>`;
+    }
+  })();
+
+  // Keep your existing mobile nav toggle working
+  const toggleBtn = document.querySelector('.nav-toggle');
+  const links = document.getElementById('navLinks');
+  if (toggleBtn && links) {
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 </body>
 </html>
