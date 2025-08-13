@@ -15,6 +15,15 @@
   --dark: #40324e;            /* Dusty Grape (UI elements/nav) */
   --highlight: #b497d6;       /* Saudi Lavender (accent color) */
   --light: #f5f2fa;           /* Soft Lavender White (text/contrast) */
+  --nav-height: 64px;
+  --content-pad: clamp(12px, 3vw, 40px);
+  --headline-scale: clamp(1.8rem, 3vw + 1rem, 3.2rem);
+  --subhead-scale: clamp(1.2rem, 1.5vw + 0.8rem, 2.4rem);
+}
+
+.container-pad {
+  padding-left: max(var(--content-pad), env(safe-area-inset-left));
+  padding-right: max(var(--content-pad), env(safe-area-inset-right));
 }
     * {
       margin: 0;
@@ -29,14 +38,20 @@
   background-size: 400% 400%;
   animation: gradientFlow 20s ease infinite;
       color: var(--light);
+      padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
     }
     
     nav {
       position: fixed;
       top: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
       background: var(--dark);
-      padding: 1rem 0;
+      padding: 0; /* height is controlled by --nav-height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       z-index: 1000;
       border-bottom: 1px solid var(--highlight);
@@ -61,8 +76,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: 100px 10% 50px;
-  background: linear-gradient(to right, #292a30, #181818);
+      padding: 100px var(--content-pad) 50px;
+      background: linear-gradient(to right, #292a30, #181818);
      color: var(--light);
     }
     
@@ -72,7 +87,7 @@
     }
     
     header .intro-text h1 {
-      font-size: 3.2rem;
+      font-size: var(--headline-scale);
       margin-bottom: 1rem;
       color: var(--highlight);
       font-weight: 700;
@@ -92,12 +107,11 @@ header img {
   border: 5px solid var(--highlight);
 }
     
-    section {
-      padding: 60px 10%;
-    }
+  section { padding: 60px var(--content-pad); }
+
     
     h2 {
-      font-size: 2.4rem;
+font-size: var(--subhead-scale); 
       margin-bottom: 20px;
       color: var(--highlight);
       font-weight: 700;
@@ -118,6 +132,15 @@ header img {
     .socials a:hover {
       transform: scale(1.2);
     }
+.socials .resume-button {
+  margin-top: 0;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+@media (max-width: 480px){
+  .socials { flex-wrap: wrap; }
+  .socials .resume-button{ width: 100%; text-align: center; }
+}
     
     .about-text {
       background: var(--accent);
@@ -173,7 +196,7 @@ header img {
   header {
     flex-direction: column;
     text-align: center;
-    padding: 80px 5% 40px;
+    padding: 80px var(--content-pad) 40px;
   }
 
   header .intro-text {
@@ -182,13 +205,11 @@ header img {
   }
 
   header img {
-    width: 180px;
-    height: 180px;
+    width: clamp(140px, 22vw, 180px);
+    height: clamp(140px, 22vw, 180px);
   }
 
-  header .intro-text h1 {
-    font-size: 2rem;
-  }
+header .intro-text h1 { font-size: var(--headline-scale); }
 
   header .intro-text p {
     font-size: 1rem;
@@ -223,9 +244,40 @@ header img {
     font-size: 0.95rem;
   }
 }
+    @media screen and (max-width: 768px) {
+  :root { --nav-height: 56px; }
+  nav a { font-size: 1rem; margin: 0 1rem; }
+}
+
+.nav-inner{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:0 var(--content-pad);
+}
+.brand{font-weight:700;color:var(--light);text-decoration:none;letter-spacing:.3px;}
+.nav-links{display:flex;align-items:center;gap:1.25rem;}
+.nav-toggle{display:none;background:transparent;border:0;color:var(--light);font-size:1.6rem;line-height:1;}
+
+@media (max-width:768px){
+  .nav-toggle{display:block;}
+  .nav-links{
+    position:fixed; top:var(--nav-height); left:0; right:0;
+    background:var(--dark); border-bottom:1px solid var(--highlight);
+    display:grid; gap:0; transform:translateY(-120%); transition:transform .25s ease; z-index:999;
+  }
+  .nav-links.open{ transform:translateY(0); }
+  .nav-links a{ display:block; padding:14px var(--content-pad); }
+}
+
+/* smaller phones */
+@media (max-width:420px){
+  nav a{ font-size:.95rem; }
+  .spotlight-card{ gap:16px; }
+  .spotlight-card img{ width:120px; height:120px; }
+}
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
     }
     .card::after {
@@ -304,7 +356,7 @@ header img {
     
 
     #spotlight {
-  padding: 60px 10%;
+  padding: 60px var(--content-pad);
 }
 
 .spotlight-card {
@@ -446,16 +498,21 @@ header img {
 </head>
 
 <body>
-  
   <nav>
-    <a href="#about">About Me</a>
-    <a href="#stack">My Tools</a>
-    <a href="#projects">Projects</a>
-    <a href="#spotlight">Spotlight</a>
-    <a href="#words">Words</a>
-  </nav>
+  <div class="nav-inner">
+    <a href="#top" class="brand">Manar</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About Me</a>
+      <a href="#stack">My Tools</a>
+      <a href="#projects">Projects</a>
+      <a href="#spotlight">Spotlight</a>
+      <a href="#words">Words</a>
+    </div>
+  </div>
+</nav>
 
-<div style="
+<div class="container-pad" style="
   background: var(--accent);
   color: var(--highlight);
   text-align: center;
@@ -464,14 +521,13 @@ header img {
   font-weight: 500;
   border-top: 1px solid #b497d6;
   border-bottom: 1px solid #b497d6;
-  margin-top: 55px;
   z-index: 999;
   position: relative;
 ">
    Featured at WWDC25  as Swift Student Challenge <b>Distinguished</b> Winner 🏆
 </div>
 
-<header>
+<header class="container-pad">
     <div class="intro-text">
       <h1>Hi, I'm Manar 👋<br>Full Stack Developer | Product Thinker</h1>
       <p>I turn problems into products, with code, empathy, and vision. <br>I believe technology becomes magical when it simply works for everyone.</p>
@@ -481,12 +537,15 @@ header img {
         <a href="https://linkedin.com/in/manaralghamdi07" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="mailto:manar.a.gh@hotmail.com"><i class="fas fa-envelope"></i></a>
       </div>
+      <div style="margin-top: 16px;">
+        <a href="assest/Manar ali alghamdi - resume.pdf" download class="resume-button">📄 Resume</a>
+      </div>
     </div>
     <img src="assest/manarProfile.jpg" alt="Manar Alghamdi" />
   </header>
 
 
-  <section id="about">
+  <section id="about" class="container-pad">
     <h2>Facts About me</h2>
     <div class="about-grid">
       <div class="about-box">I learn <b>fast</b>. But more importantly, I never stop learning.</div>
@@ -502,7 +561,7 @@ header img {
     </div>
   </section>
 
-  <section id="stack">
+  <section id="stack" class="container-pad">
     <h2 style="font-size: 2.4rem; color: var(--highlight); margin-bottom: 30px;">My Developer Arsenal</h2>
   
     <!-- Frontend Tools -->
@@ -593,6 +652,7 @@ header img {
     </div>
   </section>
 
+  
   <section id="spotlight">
     <h2>In the Spotlight</h2>
 
@@ -676,32 +736,6 @@ header img {
     </div>
 
   </section>
-
-  <section id="words">
-    <h2>Words About Me</h2>
-    <div class="testimonials">
-      <div class="testimonial-card">
-        <h4>Sarah Ahmed</h4>
-        <span>UX Designer</span>
-        <p>“Manar has a gift for building with both logic and empathy. Her attention to users is unmatched.”</p>
-      </div>
-      <div class="testimonial-card">
-        <h4>Mohammed Alzahrani</h4>
-        <span>Software Engineer</span>
-        <p>“She turns technical constraints into creative opportunities. Working with her is always insightful.”</p>
-      </div>
-      <div class="testimonial-card">
-        <h4>Lina Alharbi</h4>
-        <span>Accessibility Consultant</span>
-        <p>“Every app Manar builds tells a story — and solves a real human need with clarity and grace.”</p>
-      </div>
-    </div>
-  </section>
-
-
-  <div style="text-align: center; margin: 40px 0;">
-    <a href="ManarAlghamdi resume.pdf" download class="resume-button">📄 Download My Resume</a>
-  </div>
   <footer style="text-align: center; padding: 30px 10%; background: var(--dark);">
     <p style="font-size: 0.9rem; color: #aaa;">© 2025 Manar Alghamdi. All rights reserved.</p>
   </footer>
@@ -712,6 +746,19 @@ header img {
         event.preventDefault(); // Block the link from opening
       });
     });
+    // Mobile nav toggle
+    const toggleBtn = document.querySelector('.nav-toggle');
+    const links = document.getElementById('navLinks');
+    if (toggleBtn && links) {
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = links.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }));
+    }
   </script>
 </body>
 </html>
